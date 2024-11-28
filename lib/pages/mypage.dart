@@ -15,7 +15,6 @@ class _PostLikePageState extends State<MyPage> {
     return Scaffold(
       // bottombarを画面いっぱいに広げる
       resizeToAvoidBottomInset: true,
-      // appBar: const MyAppBar(title: "Mypage"),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -79,7 +78,9 @@ class _PostLikePageState extends State<MyPage> {
                       side: const BorderSide(color: Colors.black26),
                       padding: EdgeInsets.zero,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/profile');
+                    },
                     child: const Text(
                       "編集",
                       style: TextStyle(
@@ -96,7 +97,141 @@ class _PostLikePageState extends State<MyPage> {
               ],
             ),
             const SizedBox(
-              height: 100,
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 15, top: 5),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'AWS bot',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 15, top: 0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'hiroto_inomoto@aws.co.jp',
+                  style: TextStyle(
+                    color: Colors.black38,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 15, top: 2, bottom: 10),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '今年から大学生です！大学デビューで髪の毛を緑色🟢に染めてみました！ぜひお声かけください！🙏',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 15, bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('ポスト'),
+                  SizedBox(
+                    width: 3,
+                  ),
+                  Text(
+                    '10',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('いいねしたポスト'),
+                  SizedBox(
+                    width: 3,
+                  ),
+                  Text(
+                    '20',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey, // 枠線の色
+                    width: 1.0, // 枠線の幅
+                  ),
+                ),
+              ),
+              child: Column(
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 130,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            '最近',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      SizedBox(
+                        width: 130,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'いいねが多い',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        height: 2, // 下線の太さ
+                        color: Colors.greenAccent[400], // 下線の色
+                        width:
+                            MediaQuery.of(context).size.width / 2, // 必要に応じて調整
+                      ),
+                      Container(
+                        height: 2, // 下線の太さ
+                        color: Colors.green.withOpacity(0), // 下線の色
+                        width:
+                            MediaQuery.of(context).size.width / 2, // 必要に応じて調整
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Expanded(
               child: PostListScreen(),

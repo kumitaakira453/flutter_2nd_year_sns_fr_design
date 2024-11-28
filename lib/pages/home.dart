@@ -82,6 +82,7 @@ class PostListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       itemCount: posts.length,
       itemBuilder: (context, index) {
         final post = posts[index];
@@ -97,6 +98,7 @@ class PostListScreen extends StatelessWidget {
             margin: EdgeInsets.zero,
             shape: const RoundedRectangleBorder(),
             elevation: 0,
+            color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

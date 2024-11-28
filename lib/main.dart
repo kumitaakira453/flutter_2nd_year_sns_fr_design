@@ -4,6 +4,8 @@ import 'package:flutter_2nd_year_sns_fr_design/pages/home.dart';
 import 'package:flutter_2nd_year_sns_fr_design/pages/like_post.dart';
 import 'package:flutter_2nd_year_sns_fr_design/pages/login.dart';
 import 'package:flutter_2nd_year_sns_fr_design/pages/mypage.dart';
+import 'package:flutter_2nd_year_sns_fr_design/pages/profile.dart';
+import 'package:flutter_2nd_year_sns_fr_design/pages/settings.dart';
 import 'package:flutter_2nd_year_sns_fr_design/pages/signup.dart';
 
 void main() {
@@ -23,10 +25,9 @@ class MainApp extends StatelessWidget {
         "/login": (context) => const LoginPage(),
         "/like-post": (context) => const LikePostPage(),
         "/mypage": (context) => const MyPage(),
-        // "/profile": (context) => ProfilePage(),
-        // "/dm": (context) => DmListPage(),
-        // "/dm-room": (context) => DmRoomPage(),
+        "/profile": (context) => const ProfilePage(),
         "/post-add": (context) => const AddPostPage(),
+        "/settings": (context) => const SettingsPage(),
         // "/post-update": (context) => PostUpdatePage(),
       },
     );
