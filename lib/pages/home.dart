@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_2nd_year_sns_fr_design/components/action_bottom_sheet.dart';
 import 'package:flutter_2nd_year_sns_fr_design/components/app_bar.dart';
 import 'package:flutter_2nd_year_sns_fr_design/components/bottom_bar.dart';
 import 'package:flutter_2nd_year_sns_fr_design/components/floating_button.dart';
@@ -57,6 +58,27 @@ class PostListScreen extends StatelessWidget {
 
   PostListScreen({super.key});
 
+  /// [ActionBottomSheet]にのせる選択肢
+  /// ボトムシートの土台
+
+  void onMoreVertPressed(BuildContext context) {
+    ActionBottomSheet.show(
+      context,
+      actions: [
+        ActionItem(
+          icon: Icons.edit_note_outlined,
+          text: '投稿を編集する',
+          onTap: () => debugPrint('編集'),
+        ),
+        ActionItem(
+          icon: Icons.delete,
+          text: '投稿を削除する',
+          onTap: () => debugPrint('削除'),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -114,7 +136,9 @@ class PostListScreen extends StatelessWidget {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              onMoreVertPressed(context);
+                            },
                             child: const Icon(
                               Icons.more_vert,
                               size: 20.0,
