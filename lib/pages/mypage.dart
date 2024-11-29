@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_2nd_year_sns_fr_design/components/bottom_bar.dart';
 import 'package:flutter_2nd_year_sns_fr_design/pages/home.dart';
 
+List<Post> mypagePosts = [
+  Post(
+      userName: '怪盗キッド',
+      content:
+          '変装の達人で、世界中を騒がしている神出鬼没の怪盗。 その国際犯罪者番号から怪盗１４１２号と呼ばれていたが、必ず予告状を送りつけては、警察を完全に手玉にとり、盗みを成功させる鮮やかな手並みから、世間の人々には “怪盗キッド“と呼ばれている。 実は現在の怪盗キッドは２代目で、正体は高校生の黒羽快斗。',
+      profileImage: 'images/post/sample3.jpg',
+      isLiked: false),
+  Post(
+    userName: '怪盗キッド',
+    content: "盗みってサイコー！！",
+    profileImage: 'images/post/sample3.jpg',
+    isLiked: false,
+  ),
+];
+
 class MyPage extends StatefulWidget {
   const MyPage({super.key});
 
@@ -51,7 +66,7 @@ class _PostLikePageState extends State<MyPage> {
                             width: 4,
                           ),
                           image: const DecorationImage(
-                            image: AssetImage('images/post/sample.png'),
+                            image: AssetImage('images/post/sample3.jpg'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -104,7 +119,7 @@ class _PostLikePageState extends State<MyPage> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'AWS bot',
+                  '怪盗キッド',
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 20,
@@ -142,7 +157,7 @@ class _PostLikePageState extends State<MyPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('ポスト'),
+                  Text('投稿'),
                   SizedBox(
                     width: 3,
                   ),
@@ -217,16 +232,14 @@ class _PostLikePageState extends State<MyPage> {
                   Row(
                     children: [
                       Container(
-                        height: 2, // 下線の太さ
-                        color: Colors.greenAccent[400], // 下線の色
-                        width:
-                            MediaQuery.of(context).size.width / 2, // 必要に応じて調整
+                        height: 2,
+                        color: Colors.greenAccent[400],
+                        width: MediaQuery.of(context).size.width / 2,
                       ),
                       Container(
-                        height: 2, // 下線の太さ
-                        color: Colors.green.withOpacity(0), // 下線の色
-                        width:
-                            MediaQuery.of(context).size.width / 2, // 必要に応じて調整
+                        height: 2,
+                        color: Colors.green.withOpacity(0),
+                        width: MediaQuery.of(context).size.width / 2,
                       ),
                     ],
                   ),
@@ -234,7 +247,9 @@ class _PostLikePageState extends State<MyPage> {
               ),
             ),
             Expanded(
-              child: PostListScreen(),
+              child: PostListScreen(
+                posts: mypagePosts,
+              ),
             )
           ],
         ),

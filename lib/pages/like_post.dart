@@ -42,11 +42,13 @@ class Post {
 class PostListScreen extends StatelessWidget {
   final List<Post> posts = [
     Post(
-        userName: '井ノ本',
-        userHandle: '@johndoe',
-        tweetContent: 'flutteについて色々書いてみますものの、とは言っても色々書いてみますものの',
-        profileImage: 'images/post/sample.png',
-        isLiked: true),
+      userName: '工藤新一',
+      userHandle: '@janesmith',
+      tweetContent:
+          "俺は高校生探偵、工藤新一。幼馴染で同級生の毛利蘭と遊園地へ遊びに行って黒ずくめの男の怪しげな取引現場を目撃した。取引を見るのに夢中になっていた俺は、背後から近づいてくるもう一人の仲間に気づかなかった。俺はその男に毒薬を飲まされ、目が覚めたら・・・",
+      profileImage: 'images/post/sample5.png',
+      isLiked: true,
+    ),
   ];
 
   PostListScreen({super.key});
