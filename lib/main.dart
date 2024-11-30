@@ -7,6 +7,7 @@ import 'package:flutter_2nd_year_sns_fr_design/pages/mypage.dart';
 import 'package:flutter_2nd_year_sns_fr_design/pages/profile.dart';
 import 'package:flutter_2nd_year_sns_fr_design/pages/settings.dart';
 import 'package:flutter_2nd_year_sns_fr_design/pages/signup.dart';
+import 'package:flutter_2nd_year_sns_fr_design/pages/update_post.dart';
 
 void main() {
   runApp(const MainApp());
@@ -26,9 +27,9 @@ class MainApp extends StatelessWidget {
         "/like-post": (context) => const LikePostPage(),
         "/mypage": (context) => const MyPage(),
         "/profile": (context) => const ProfilePage(),
-        "/post-add": (context) => const AddPostPage(),
+        "/post/add": (context) => const AddPostPage(),
         "/settings": (context) => const SettingsPage(),
-        // "/post-update": (context) => PostUpdatePage(),
+        "/post/update": (context) => const UpdatePostPage(),
       },
     );
   }

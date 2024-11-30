@@ -1,17 +1,15 @@
 class Post {
-  final int id;
-  final String title;
+  final String userName;
   final String content;
-  final String photoPath;
-  final bool isFavorited;
-  final int likeCount;
+  final String profileImage;
+  final bool isLiked;
+  final String? photo;
 
   Post({
-    required this.id,
-    required this.title,
+    required this.userName,
     required this.content,
-    required this.photoPath,
-    required this.isFavorited,
-    required this.likeCount,
+    required this.profileImage,
+    required this.isLiked,
+    this.photo,
   });
 }

@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_2nd_year_sns_fr_design/components/bottom_bar.dart';
-import 'package:flutter_2nd_year_sns_fr_design/pages/home.dart';
+import 'package:flutter_2nd_year_sns_fr_design/components/post_list_screen.dart';
+import 'package:flutter_2nd_year_sns_fr_design/models/post.dart';
 
 List<Post> mypagePosts = [
   Post(
-      userName: '怪盗キッド',
-      content:
-          '変装の達人で、世界中を騒がしている神出鬼没の怪盗。 その国際犯罪者番号から怪盗１４１２号と呼ばれていたが、必ず予告状を送りつけては、警察を完全に手玉にとり、盗みを成功させる鮮やかな手並みから、世間の人々には “怪盗キッド“と呼ばれている。 実は現在の怪盗キッドは２代目で、正体は高校生の黒羽快斗。',
-      profileImage: 'images/post/sample3.jpg',
-      isLiked: false),
+    userName: '怪盗キッド',
+    content:
+        '変装の達人で、世界中を騒がしている神出鬼没の怪盗。 その国際犯罪者番号から怪盗１４１２号と呼ばれていたが、必ず予告状を送りつけては、警察を完全に手玉にとり、盗みを成功させる鮮やかな手並みから、世間の人々には “怪盗キッド“と呼ばれている。 実は現在の怪盗キッドは２代目で、正体は高校生の黒羽快斗。',
+    profileImage: 'images/post/sample3.jpg',
+    isLiked: false,
+  ),
   Post(
     userName: '怪盗キッド',
     content: "盗みってサイコー！！",
     profileImage: 'images/post/sample3.jpg',
     isLiked: false,
+  ),
+  Post(
+    userName: '怪盗キッド',
+    content: "今日のお目当ては赤面の人魚(ブラッシュ・マーメイド)!!動物愛護団体が怒りそうなお宝だぜ！",
+    profileImage: 'images/post/sample3.jpg',
+    isLiked: false,
+    photo: 'images/post/sample6.jpg',
   ),
 ];
 
@@ -21,20 +30,31 @@ class MyPage extends StatefulWidget {
   const MyPage({super.key});
 
   @override
-  State<MyPage> createState() => _PostLikePageState();
+  State<MyPage> createState() => _MyPageState();
 }
 
-class _PostLikePageState extends State<MyPage> {
+class _MyPageState extends State<MyPage> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottombarを画面いっぱいに広げる
       resizeToAvoidBottomInset: true,
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -42,29 +62,23 @@ class _PostLikePageState extends State<MyPage> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  // 背景画像
                   Positioned.fill(
                     child: Image.asset(
                       'images/post/sample2.jpg',
                       fit: BoxFit.cover,
                     ),
                   ),
-                  // プロフィールカード
                   Positioned(
-                    bottom: -60, // 少しはみ出す位置調整
-                    left: 16, // 左寄せ
+                    bottom: -60,
+                    left: 16,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0), // 余白を追加
+                      padding: const EdgeInsets.all(8.0),
                       child: Container(
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          shape: BoxShape.circle, // 円形
-                          border: Border.all(
-                            // 白い境界線
-                            color: Colors.white,
-                            width: 4,
-                          ),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white, width: 4),
                           image: const DecorationImage(
                             image: AssetImage('images/post/sample3.jpg'),
                             fit: BoxFit.cover,
@@ -76,9 +90,7 @@ class _PostLikePageState extends State<MyPage> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -106,14 +118,10 @@ class _PostLikePageState extends State<MyPage> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const Padding(
               padding: EdgeInsets.only(left: 15, top: 5),
               child: Align(
@@ -158,9 +166,7 @@ class _PostLikePageState extends State<MyPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text('投稿'),
-                  SizedBox(
-                    width: 3,
-                  ),
+                  SizedBox(width: 3),
                   Text(
                     '10',
                     style: TextStyle(
@@ -168,13 +174,9 @@ class _PostLikePageState extends State<MyPage> {
                       fontSize: 16,
                     ),
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
+                  SizedBox(width: 10),
                   Text('いいねしたポスト'),
-                  SizedBox(
-                    width: 3,
-                  ),
+                  SizedBox(width: 3),
                   Text(
                     '20',
                     style: TextStyle(
@@ -185,72 +187,27 @@ class _PostLikePageState extends State<MyPage> {
                 ],
               ),
             ),
-            Container(
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.grey, // 枠線の色
-                    width: 1.0, // 枠線の幅
-                  ),
-                ),
-              ),
-              child: Column(
+            TabBar(
+              controller: _tabController,
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.grey,
+              // 下線(indicator)の設定
+              indicatorColor: Colors.greenAccent,
+              indicatorSize: TabBarIndicatorSize.tab,
+              tabs: const [
+                Tab(text: '最近'),
+                Tab(text: 'いいねが多い'),
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
                 children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 130,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            '最近',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      SizedBox(
-                        width: 130,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'いいねが多い',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        height: 2,
-                        color: Colors.greenAccent[400],
-                        width: MediaQuery.of(context).size.width / 2,
-                      ),
-                      Container(
-                        height: 2,
-                        color: Colors.green.withOpacity(0),
-                        width: MediaQuery.of(context).size.width / 2,
-                      ),
-                    ],
-                  ),
+                  PostListScreen(posts: mypagePosts), // 最近の投稿
+                  PostListScreen(posts: mypagePosts), // いいねが多い投稿
                 ],
               ),
             ),
-            Expanded(
-              child: PostListScreen(
-                posts: mypagePosts,
-              ),
-            )
           ],
         ),
       ),

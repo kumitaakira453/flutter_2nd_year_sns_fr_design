@@ -10,7 +10,7 @@ class MyFloatingButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(100), //角の丸み
       ),
       onPressed: () {
-        Navigator.of(context).pushNamed('/post-add');
+        Navigator.of(context).pushNamed('/post/add');
       },
       backgroundColor: Colors.greenAccent[400],
       child: const Icon(Icons.add),
